@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "TuyenTheoNgay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var cn = "";
+    if ((Session["chinhanh"]) == null)
+    {
+        cn = "";
+    }
+    else
+    {
+        cn = Session["chinhanh"].ToString();
+    }
+
+    var nhom = Session["nhom"].ToString();
+
+}
+
+
+@section scripts{
+    <script src="~/Assets/Admin/js/User/bootbox.min.js"></script>
+    <script src="~/Assets/Admin/js/User/mustache.min.js"></script>
+    <script src="~/Assets/Admin/js/User/jquery.twbsPagination.min.js"></script>
+    <script src="~/Assets/Admin/js/User/jquery.validate.min.js"></script>
+    <script src="~/Assets/Admin/js/User/jquery-ui/jquery-ui.js"></script>
+    <script src="~/Assets/Admin/js/TheoTuyentq/theoTuyentqController.js"></script>
+    <link href="~/Assets/Admin/css/user.css" rel="stylesheet" />
+    @*<script>
+            $(function () {
+                $('.modal-dialog').draggable();
+            });
+        </script>*@
+}
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>BÁO CÁO DOANH THU THEO TUYẾN THAM QUAN </h4>
+        </div>
+        <div class="panel-body">
+            <form id="frmSearch" class="form-horizontal" role="form" method="post" autocomplete="off">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <input type="hidden" id="hidCn" data-cn="@cn" />
+                        <input type="hidden" id="hidNhom" data-nhom="@nhom" />
+
+                        <div class="col-md-2">
+                            Từ ngày
+                            <input type="text" class="form-control maskInput" name="tungay" id="txtTuNgay" placeholder="Type date..." />
+                        </div>
+
+                        <div class="col-md-2">
+                            Đến ngày
+                            <input type="text" class="form-control maskInput" name="denngay" id="txtDenNgay" placeholder="Type date..." />
+                        </div>
+                        @if (nhom == "Admins" || nhom == "TNB" || nhom == "DNB" || nhom == "MT" || nhom == "MB")
+                        {
+                            <div class="col-md-2">
+                                Khối
+                                <select class="form-control" id="ddlKhoi" name="khoi">
+                                    <option value="OB">OB</option>
+                                    <option value="ND">ND</option>
+                                </select>
+                            </div>
+                        }
+
+                        <div class="col-md-4">
+                            Tuyến tham quan
+                            <select class="form-control" id="ddlTuyentq" name="tuyenTq"></select>
+                        </div>
+
+                        @if (nhom == "Users")
+                        {
+
+                            var khoi = Session["khoi"].ToString();
+                            <input type="hidden" id="hidKhoi" data-khoi="@khoi" />
+                        }
+                        <br />
+                        <div class="col-md-2">
+
+                            <span class="btn-group">
+                                <button type="button" id="btnSearch" class="btn btn-outline btn-primary"><i class="fa fa-search"></i></button>
+                                <button id="btnReset" class="btn btn-outline btn-warning"><i class="fas fa-broom"></i></button>
+                                <button id="btnExport" class="btn btn-outline btn-success"><i class="fas fa-file-export"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="text-left">
+                    <td>#</td>
+
+                    <td>STT</td>
+                    <td>Nhân Viên</td>
+                    <td>Code CN</td>
+                    <td>Tuyến tham quan</td>
+                    <td>Doanh SỐ</td>
+                    <td>Thực Thu</td>
+
+                </tr>
+            </thead>
+            <tbody id="tblData" class="table table-hover"></tbody>
+        </table>
+
+        <div id="pagination" class="pagination"></div>
+    </div>
+
+
+    <script id="data-template" type="x-tmpl-mustache">
+        Hello {{ hoten }}!
+        <tr>
+            <td>
+                <form id="frmDetail" action="/BaoCao/LoadDataSaleTheoTuyentqChitietToExcel">
+
+                    <input type="hidden" name="tungay" id="hidTuNgay" />
+                    <input type="hidden" name="denngay" id="hidDenNgay" />
+                    <input type="hidden" name="nhanvien" id="hidNhanVien" />
+                    <input type="hidden" name="tuyentq" id="hidTuyentq" />
+                    <input type="hidden" name="khoi" id="hidKhoi" />
+
+                    <button type="button" data-tuyentq="{{tuyentq}}" data-nhanvien="{{nguoixuatve}}" class="btn btn-outline btn-success btnExportDetail"><i class="fas fa-file-export"></i></button>
+                </form>
+            </td>
+
+            <td class="text-center">{{stt}}</td>
+            <td class="text-left">{{nguoixuatve}}</td>
+            <td class="text-center">{{chinhanh}}</td>
+            <td class="text-left">{{tuyentq}}</td>
+            <td class="text-right">{{doanhso}}</td>
+            <td class="text-center">{{thucthu}}</td>
+
+        </tr>
+    </script>
+</div>

@@ -1,0 +1,110 @@
+﻿<!-- Modal -->
+<div id="modalAddUpdate" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thêm/Cập nhật danh mục tài khoản</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="frmSaveData">
+                    <div class="row">
+
+
+                        <div class="form-group col-md-3">
+                            <label for="txtUsername">Username:</label>
+                            <input type="text" class="form-control" name="username" id="txtUsername">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="txtPassword">Password:</label>
+                            <input type="password" class="form-control" name="password" id="txtPassword">
+                        </div>
+                        <input type="hidden" id="hidID" value="" />
+
+                        <div class="form-group col-md-3">
+                            <label for="txtHoTen">Họ tên:</label>
+                            <input type="text" class="form-control" name="hoten" id="txtHoTen">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="ddlNhom">Nhóm quyền:</label>
+                            <select class="form-control" id="ddlNhom">
+                                @*<option value="">--Chọn giới tính--</option>*@
+                                <option value="Users">Users</option>
+                                <option value="Admins">Admins</option>
+                                <option value="TNB">Tây nam bộ</option>
+                                <option value="DNB">Dông nam bộ</option>
+                                <option value="MT">Miền trung</option>
+                                <option value="MB">Miền bắc</option>
+                                <option value="KDO">KDOnline</option>
+                            </select>
+                            @*<input type="text" class="form-control" name="phai" id="ddlPhai">*@
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="form-group col-md-3">
+                            <label for="ddlChiNhanh">Chi nhánh:</label>
+                            <select class="form-control" id="ddlChiNhanh">
+                                @*<option value="">--Chọn giới tính--</option>*@
+                                <option value="STS">STS</option>
+                                <option value="STL">STL</option>
+                            </select>
+                            @*<input type="text" class="form-control" name="phai" id="ddlPhai">*@
+                        </div>
+
+
+                        <div class="form-group col-md-3">
+                            <label for="ddlDaiLy">Dại lý:</label>
+                            <select class="form-control" id="ddlDaiLy">
+                                @*<option value="">--Chọn giới tính--</option>*@
+                                <option value="daily1">daily1</option>
+                                <option value="daily2">daily2</option>
+                            </select>
+                            @*<input type="text" class="form-control" name="phai" id="ddlPhai">*@
+                        </div>
+
+                        @*<div class="form-group col-md-3">
+
+                            <label for="ddlRole">Role:</label>
+                            <select class="form-control" id="ddlRole">
+                                <option value="admin">admin</option>
+                                <option value="user">user</option>
+                            </select>
+                        </div>*@
+
+
+                        <div class="form-group col-md-3">
+                            <label for="ddlKhoi">Khoi:</label>
+                            <select class="form-control" id="ddlKhoi">
+                                @*<option value="">--Chọn giới tính--</option>*@
+                                <option value="OB">OB</option>
+                                <option value="ND">ND</option>
+                            </select>
+                        </div>
+
+                        <div class="checkbox form-group col-md-3">
+                            <label><input type="checkbox" id="ckTrangThai"> Trạng thái:</label>
+                        </div>
+
+                        <input type="hidden" class="form-control" name="ngaytao" id="txtNgayTao">
+                        <input type="hidden" class="form-control" name="ngaycapnhat" id="txtNgayCapNhat">
+                        <input type="hidden" class="form-control" name="hidPass" id="txtHidPass">
+                        <input type="hidden" class="form-control" name="hidPass" id="txtHidID">
+
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="btnSave"><i class="fa fa-save"></i> Lưu</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-power-off"></i></button>
+            </div>
+        </div>
+
+    </div>
+</div>

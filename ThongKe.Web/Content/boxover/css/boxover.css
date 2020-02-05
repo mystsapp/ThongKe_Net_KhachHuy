@@ -1,0 +1,44 @@
+/* CSS Document */
+
+.divheader {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #09F;
+	border:1px solid #C8BA92;
+	width: 150px;
+	padding: 5px;
+	background-color: #FCF;
+	}
+.divbody {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color: #000;
+	border-left:1px solid #C8BA92;
+	border-right:1px solid #C8BA92;
+	border-bottom:1px solid #C8BA92;
+	width:150px;
+	padding:5px;
+	background:#FFFFFF;
+         }
+.divheader2 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	font-weight:bold;
+	color: #000;
+	border:1px solid #C4D5E3;
+	width:350px;
+	padding:10px;
+	background-color: #9CF;
+ }
+.divbody2 {
+	font-family:"Times New Roman", Times, serif;
+	font-size:12px;
+	color:#333;
+	border-left:1px solid #C4D5E3;
+	border-right:1px solid #C4D5E3;
+	border-bottom:1px solid #C4D5E3;
+	width:350px;
+	padding:10px;
+	background:#FFFFFF;
+    }

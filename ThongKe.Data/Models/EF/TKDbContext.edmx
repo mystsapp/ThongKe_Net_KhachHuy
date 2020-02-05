@@ -1,0 +1,1214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="thongkeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="hoten" Type="nvarchar" MaxLength="50" />
+          <Property Name="daily" Type="nvarchar" MaxLength="50" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="role" Type="varchar" MaxLength="50" />
+          <Property Name="doimatkhau" Type="bit" Nullable="false" />
+          <Property Name="ngaydoimk" Type="date" Nullable="false" />
+          <Property Name="trangthai" Type="bit" Nullable="false" />
+          <Property Name="khoi" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaytao" Type="datetime" Nullable="false" />
+          <Property Name="nguoicapnhat" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaycapnhat" Type="datetime" />
+          <Property Name="nhom" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="chinhanh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="tencn" Type="nvarchar" MaxLength="50" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="100" />
+          <Property Name="thanhpho" Type="nvarchar" MaxLength="70" />
+          <Property Name="dienthoai" Type="varchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="masothue" Type="varchar" MaxLength="50" />
+          <Property Name="trangthai" Type="bit" Nullable="false" />
+          <Property Name="nhom" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="chitiettour">
+          <Key>
+            <PropertyRef Name="sgtcode" />
+          </Key>
+          <Property Name="sgtcode" Type="varchar" MaxLength="17" Nullable="false" />
+          <Property Name="tuyentq" Type="nvarchar" MaxLength="70" />
+          <Property Name="batdau" Type="datetime" />
+          <Property Name="ketthuc" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dmdaily">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Daily" Type="nvarchar" MaxLength="25" />
+          <Property Name="TenDaily" Type="nvarchar" MaxLength="100" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dienthoai" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="chinhanh" Type="nvarchar" MaxLength="3" />
+          <Property Name="trangthai" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="doanhthuDoanChitiet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="vetourid" Type="int" />
+          <Property Name="stt" Type="int" />
+          <Property Name="serial" Type="nvarchar" MaxLength="70" />
+          <Property Name="tenkhach" Type="nvarchar" MaxLength="100" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="200" />
+          <Property Name="diemdon" Type="nvarchar" MaxLength="200" />
+          <Property Name="giave" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="congno" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ghichu" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="doanhthuDoanNgayDi">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="sgtcode" Type="varchar" MaxLength="17" />
+          <Property Name="tuyentq" Type="nvarchar" MaxLength="50" />
+          <Property Name="batdau" Type="datetime" />
+          <Property Name="ketthuc" Type="datetime" />
+          <Property Name="sokhach" Type="int" />
+          <Property Name="doanhthu" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="doanhthuQuayChitiet">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="sgtcode" Type="varchar" MaxLength="17" />
+          <Property Name="serial" Type="varchar" MaxLength="20" />
+          <Property Name="tenkhach" Type="nvarchar" MaxLength="50" />
+          <Property Name="hanhtrinh" Type="nvarchar" MaxLength="150" />
+          <Property Name="ngaydi" Type="varchar" MaxLength="10" />
+          <Property Name="ngayve" Type="varchar" MaxLength="10" />
+          <Property Name="giave" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="nguoiban" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="doanhthuSaleChitiet">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="sgtcode" Type="varchar" MaxLength="17" />
+          <Property Name="tuyentq" Type="nvarchar" MaxLength="50" />
+          <Property Name="tenkhach" Type="nvarchar" MaxLength="50" />
+          <Property Name="chiemcho" Type="int" />
+          <Property Name="doanhthu" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="nguoixuatve" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="doanhthuSaleQuay">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="nguoixuatve" Type="nvarchar" MaxLength="50" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="doanhso" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="doanhthuSaleTuyen">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="nguoixuatve" Type="nvarchar" MaxLength="50" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="tuyentq" Type="nvarchar" MaxLength="50" />
+          <Property Name="doanhso" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="doanhthuSaleTuyentqChitiet">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="sgtcode" Type="varchar" MaxLength="17" />
+          <Property Name="tuyentq" Type="nvarchar" MaxLength="50" />
+          <Property Name="tenkhach" Type="nvarchar" MaxLength="50" />
+          <Property Name="chiemcho" Type="int" />
+          <Property Name="doanhthu" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="nguoixuatve" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="doanhthuToanhethong">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="dailyxuatve" Type="nvarchar" MaxLength="50" />
+          <Property Name="khachht" Type="int" />
+          <Property Name="thucthuht" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="khachcu" Type="int" />
+          <Property Name="thucthucu" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="doanthuQuayNgayBan">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="dailyxuatve" Type="nvarchar" MaxLength="50" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="sokhach" Type="int" />
+          <Property Name="doanhso" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="doanhthu" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="QuayNgayBan">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="dailyxuatve" Type="nvarchar" MaxLength="50" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="sokhach" Type="int" />
+          <Property Name="doanhso" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="doanhthu" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="thongkeweb">
+          <Key>
+            <PropertyRef Name="chinhanh" />
+          </Key>
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="taove" Type="int" />
+          <Property Name="tuhuy" Type="int" />
+          <Property Name="chuaxuatve" Type="int" />
+          <Property Name="thanhcong" Type="int" />
+          <Property Name="huy" Type="int" />
+        </EntityType>
+        <EntityType Name="thongkewebchitiet">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="sgtcode" Type="varchar" MaxLength="17" />
+          <Property Name="hanhtrinh" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaydi" Type="date" />
+          <Property Name="ngayve" Type="date" />
+          <Property Name="tenkhach" Type="nvarchar" MaxLength="50" />
+          <Property Name="serial" Type="varchar" MaxLength="12" />
+          <Property Name="huyve" Type="varchar" MaxLength="12" />
+          <Property Name="sokhach" Type="int" />
+          <Property Name="doanhso" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="nguoixuatve" Type="nvarchar" MaxLength="50" />
+          <Property Name="dailyxuatve" Type="nvarchar" MaxLength="50" />
+          <Property Name="kenhgd" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tuyentheoquy">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="tuyentq" Type="nvarchar" MaxLength="50" />
+          <Property Name="sk1" Type="int" />
+          <Property Name="doanhso1" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="sk_1" Type="int" />
+          <Property Name="doanhso_1" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="sk2" Type="int" />
+          <Property Name="doanhso2" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="sk_2" Type="int" />
+          <Property Name="doanhso_2" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="sk3" Type="int" />
+          <Property Name="doanhso3" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="sk_3" Type="int" />
+          <Property Name="doanhso_3" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tuyentqNgaydi">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="bigint" Nullable="false" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="tuyentq" Type="nvarchar" MaxLength="50" />
+          <Property Name="khachht" Type="int" />
+          <Property Name="thucthuht" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="khachcu" Type="int" />
+          <Property Name="thucthucu" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Function Name="spBaocaoDoanhThuDoanTheoNgayDi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spBaocaoDoanhThuQuayTheoNgayBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spBaocaoDoanhThuQuayTheoNgayBanND" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spBaocaoDoanhThuQuayTheoNgayBanOB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spBaocaoDoanhThuQuayTheoNgayDi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spBaocaoDoanhThuSaleTheoNgayDi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spBaocaoDoanhThuSaleTheoQuay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spBaocaoDoanhThuSaleTheoTuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="tuyentq" Type="nvarchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spDoanhSoQuayChitietNgayBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="quay" Type="varchar" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spDoanhSoQuayChitietNgaydi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="quay" Type="varchar" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spDoanhthuDoanChitiet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sgtcode" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spDoanhThuSaleChitietNgayban" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="nhanvien" Type="varchar" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spDoanhThuSaleChitietNgaydi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="nhanvien" Type="varchar" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spDoanhThuSaleChitietTuyentq" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="nhanvien" Type="nvarchar" Mode="In" />
+          <Parameter Name="tuyentq" Type="nvarchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spDoanthuQuayTungay_Dengay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="vanphong" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetTourByCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sgtcode" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spLoadTuyentq" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongKeDoanhthu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongkeKhach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongkeKhachToanHeThong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongkeTuyenTheoQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="quy" Type="int" Mode="In" />
+          <Parameter Name="nam" Type="int" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongkeTuyentqTheoNgayDi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongkeWeb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongkeWeb_ngaydi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongkeWebchitiet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spThongkeWebchitiet_ngaydi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <Parameter Name="chinhanh" Type="varchar" Mode="In" />
+          <Parameter Name="khoi" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="thongkeModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chinhanh" EntityType="Self.chinhanh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chitiettour" EntityType="Self.chitiettour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dmdaily" EntityType="Self.dmdaily" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanhthuDoanChitiet" EntityType="Self.doanhthuDoanChitiet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanhthuDoanNgayDi" EntityType="Self.doanhthuDoanNgayDi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanhthuQuayChitiet" EntityType="Self.doanhthuQuayChitiet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanhthuSaleChitiet" EntityType="Self.doanhthuSaleChitiet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanhthuSaleQuay" EntityType="Self.doanhthuSaleQuay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanhthuSaleTuyen" EntityType="Self.doanhthuSaleTuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanhthuSaleTuyentqChitiet" EntityType="Self.doanhthuSaleTuyentqChitiet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanhthuToanhethong" EntityType="Self.doanhthuToanhethong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doanthuQuayNgayBan" EntityType="Self.doanthuQuayNgayBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuayNgayBan" EntityType="Self.QuayNgayBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="thongkeweb" EntityType="Self.thongkeweb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="thongkewebchitiet" EntityType="Self.thongkewebchitiet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tuyentheoquy" EntityType="Self.tuyentheoquy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tuyentqNgaydi" EntityType="Self.tuyentqNgaydi" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="thongkeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="daily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="doimatkhau" Type="Boolean" Nullable="false" />
+          <Property Name="ngaydoimk" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="khoi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nguoicapnhat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaycapnhat" Type="DateTime" Precision="3" />
+          <Property Name="nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="chinhanh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chinhanh1" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tencn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="thanhpho" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="dienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="masothue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dmdaily">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Daily" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="TenDaily" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="trangthai" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="doanhthuDoanNgayDi">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="sgtcode" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="tuyentq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="batdau" Type="DateTime" Precision="3" />
+          <Property Name="ketthuc" Type="DateTime" Precision="3" />
+          <Property Name="sokhach" Type="Int32" />
+          <Property Name="doanhthu" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="doanhthuQuayChitiet">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sgtcode" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="serial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tenkhach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hanhtrinh" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ngaydi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ngayve" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="giave" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="nguoiban" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="doanhthuSaleQuay">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="nguoixuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="doanhso" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="doanhthuToanhethong">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="dailyxuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="khachht" Type="Int32" />
+          <Property Name="thucthuht" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="khachcu" Type="Int32" />
+          <Property Name="thucthucu" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="doanthuQuayNgayBan">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="dailyxuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sokhach" Type="Int32" />
+          <Property Name="doanhso" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="doanhthu" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityContainer Name="TKDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="chinhanhs" EntityType="Self.chinhanh" />
+          <EntitySet Name="dmdailies" EntityType="Self.dmdaily" />
+          <EntitySet Name="doanhthuDoanNgayDis" EntityType="Self.doanhthuDoanNgayDi" />
+          <EntitySet Name="doanhthuQuayChitiets" EntityType="Self.doanhthuQuayChitiet" />
+          <EntitySet Name="doanhthuSaleQuays" EntityType="Self.doanhthuSaleQuay" />
+          <EntitySet Name="doanhthuToanhethongs" EntityType="Self.doanhthuToanhethong" />
+          <EntitySet Name="doanthuQuayNgayBans" EntityType="Self.doanthuQuayNgayBan" />
+          <FunctionImport Name="spBaocaoDoanhThuDoanTheoNgayDi" EntitySet="doanhthuDoanNgayDis" ReturnType="Collection(thongkeModel.doanhthuDoanNgayDi)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBaocaoDoanhThuQuayTheoNgayDi" EntitySet="doanthuQuayNgayBans" ReturnType="Collection(thongkeModel.doanthuQuayNgayBan)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBaocaoDoanhThuSaleTheoNgayDi" EntitySet="doanhthuSaleQuays" ReturnType="Collection(thongkeModel.doanhthuSaleQuay)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBaocaoDoanhThuSaleTheoQuay" EntitySet="doanhthuSaleQuays" ReturnType="Collection(thongkeModel.doanhthuSaleQuay)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spDoanhSoQuayChitietNgayBan" EntitySet="doanhthuQuayChitiets" ReturnType="Collection(thongkeModel.doanhthuQuayChitiet)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="quay" Mode="In" Type="String" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spDoanhThuSaleChitietNgayban" EntitySet="doanhthuSaleChitiets" ReturnType="Collection(thongkeModel.doanhthuSaleChitiet)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="nhanvien" Mode="In" Type="String" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spDoanhThuSaleChitietNgaydi" EntitySet="doanhthuSaleChitiets" ReturnType="Collection(thongkeModel.doanhthuSaleChitiet)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="nhanvien" Mode="In" Type="String" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spThongKeDoanhthu">
+          <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spThongkeKhach">
+          <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spThongkeKhachToanHeThong" EntitySet="doanhthuToanhethongs" ReturnType="Collection(thongkeModel.doanhthuToanhethong)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spThongkeTuyentqTheoNgayDi" EntitySet="tuyentqNgaydis" ReturnType="Collection(thongkeModel.tuyentqNgaydi)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spDoanhSoQuayChitietNgaydi" EntitySet="doanhthuQuayChitiets" ReturnType="Collection(thongkeModel.doanhthuQuayChitiet)">
+            <Parameter Name="quay" Mode="In" Type="String" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tuyentqNgaydis" EntityType="thongkeModel.tuyentqNgaydi" />
+          <EntitySet Name="thongkewebs" EntityType="thongkeModel.thongkeweb" />
+          <FunctionImport Name="spThongkeWeb" EntitySet="thongkewebs" ReturnType="Collection(thongkeModel.thongkeweb)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spThongkeWebchitiet" EntitySet="thongkewebchitiets" ReturnType="Collection(thongkeModel.thongkewebchitiet)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="doanhthuSaleChitiets" EntityType="thongkeModel.doanhthuSaleChitiet" />
+          <FunctionImport Name="spDoanhthuDoanChitiet" EntitySet="doanhthuDoanChitiets" ReturnType="Collection(thongkeModel.doanhthuDoanChitiet)">
+            <Parameter Name="sgtcode" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="doanhthuDoanChitiets" EntityType="thongkeModel.doanhthuDoanChitiet" />
+          <EntitySet Name="chitiettours" EntityType="thongkeModel.chitiettour" />
+          <FunctionImport Name="spGetTourByCode" ReturnType="Collection(thongkeModel.spGetTourByCode_Result)">
+            <Parameter Name="sgtcode" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spThongkeWeb_ngaydi" EntitySet="thongkewebs" ReturnType="Collection(thongkeModel.thongkeweb)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spThongkeWebchitiet_ngaydi" EntitySet="thongkewebchitiets" ReturnType="Collection(thongkeModel.thongkewebchitiet)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="thongkewebchitiets" EntityType="thongkeModel.thongkewebchitiet" />
+          <EntitySet Name="doanhthuSaleTuyens" EntityType="thongkeModel.doanhthuSaleTuyen" />
+          <EntitySet Name="doanhthuSaleTuyentqChitiets" EntityType="thongkeModel.doanhthuSaleTuyentqChitiet" />
+          <FunctionImport Name="spBaocaoDoanhThuSaleTheoTuyen" EntitySet="doanhthuSaleTuyens" ReturnType="Collection(thongkeModel.doanhthuSaleTuyen)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="tuyentq" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spDoanhThuSaleChitietTuyentq" EntitySet="doanhthuSaleTuyentqChitiets" ReturnType="Collection(thongkeModel.doanhthuSaleTuyentqChitiet)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="nhanvien" Mode="In" Type="String" />
+            <Parameter Name="tuyentq" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spDoanthuQuayTungay_Dengay" ReturnType="Collection(thongkeModel.spDoanthuQuayTungay_Dengay_Result)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="vanphong" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spLoadTuyentq" ReturnType="Collection(String)">
+          <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tuyentheoquys" EntityType="thongkeModel.tuyentheoquy" />
+          <FunctionImport Name="spThongkeTuyenTheoQuy" EntitySet="tuyentheoquys" ReturnType="Collection(thongkeModel.tuyentheoquy)">
+            <Parameter Name="quy" Mode="In" Type="Int32" />
+            <Parameter Name="nam" Mode="In" Type="Int32" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBaocaoDoanhThuQuayTheoNgayBan" EntitySet="QuayNgayBans" ReturnType="Collection(thongkeModel.QuayNgayBan)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+            <Parameter Name="khoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="QuayNgayBans" EntityType="thongkeModel.QuayNgayBan" />
+          <FunctionImport Name="spBaocaoDoanhThuQuayTheoNgayBanND" EntitySet="doanthuQuayNgayBans" ReturnType="Collection(thongkeModel.doanthuQuayNgayBan)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBaocaoDoanhThuQuayTheoNgayBanOB" EntitySet="doanthuQuayNgayBans" ReturnType="Collection(thongkeModel.doanthuQuayNgayBan)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+            <Parameter Name="chinhanh" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="tuyentqNgaydi">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="tuyentq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="khachht" Type="Int32" />
+          <Property Name="thucthuht" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="khachcu" Type="Int32" />
+          <Property Name="thucthucu" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="thongkeweb">
+          <Key>
+            <PropertyRef Name="chinhanh" />
+          </Key>
+          <Property Name="chinhanh" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="taove" Type="Int32" />
+          <Property Name="tuhuy" Type="Int32" />
+          <Property Name="chuaxuatve" Type="Int32" />
+          <Property Name="thanhcong" Type="Int32" />
+          <Property Name="huy" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="spThongkeWebchitiet_Result">
+          <Property Type="Int64" Name="stt" Nullable="true" />
+          <Property Type="String" Name="sgtcode" Nullable="false" MaxLength="17" />
+          <Property Type="String" Name="tuyentq" Nullable="true" MaxLength="150" />
+          <Property Type="DateTime" Name="batdau" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ketthuc" Nullable="false" Precision="23" />
+          <Property Type="String" Name="tenkhach" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="serial" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="huyve" Nullable="true" MaxLength="12" />
+          <Property Type="Decimal" Name="doanhso" Nullable="true" Precision="14" Scale="0" />
+          <Property Type="String" Name="nguoixuatve" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="dailyxuatve" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="kenhgd" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <EntityType Name="doanhthuSaleChitiet">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sgtcode" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="tuyentq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tenkhach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chiemcho" Type="Int32" />
+          <Property Name="doanhthu" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="nguoixuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="doanhthuDoanChitiet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="vetourid" Type="Int32" />
+          <Property Name="stt" Type="Int32" />
+          <Property Name="serial" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="tenkhach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="diemdon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="giave" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="congno" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ghichu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="chitiettour">
+          <Key>
+            <PropertyRef Name="sgtcode" />
+          </Key>
+          <Property Name="sgtcode" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="tuyentq" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="batdau" Type="DateTime" Precision="3" />
+          <Property Name="ketthuc" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="spGetTourByCode_Result">
+          <Property Type="String" Name="sgtcode" Nullable="false" MaxLength="17" />
+          <Property Type="String" Name="tuyentq" Nullable="true" MaxLength="212" />
+          <Property Type="DateTime" Name="batdau" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ketthuc" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spThongkeWebchitiet_ngaydi_Result">
+          <Property Type="Int64" Name="stt" Nullable="true" />
+          <Property Type="String" Name="sgtcode" Nullable="false" MaxLength="17" />
+          <Property Type="String" Name="hanhtrinh" Nullable="true" MaxLength="150" />
+          <Property Type="DateTime" Name="ngaydi" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ngayve" Nullable="false" Precision="23" />
+          <Property Type="String" Name="tenkhach" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="serial" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="huyve" Nullable="true" MaxLength="12" />
+          <Property Type="Decimal" Name="doanhso" Nullable="true" Precision="14" Scale="0" />
+          <Property Type="String" Name="nguoixuatve" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="dailyxuatve" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="kenhgd" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <EntityType Name="thongkewebchitiet">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="sgtcode" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="hanhtrinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaydi" Type="DateTime" Precision="0" />
+          <Property Name="ngayve" Type="DateTime" Precision="0" />
+          <Property Name="tenkhach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="serial" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="huyve" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="sokhach" Type="Int32" />
+          <Property Name="doanhso" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="nguoixuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dailyxuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kenhgd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="doanhthuSaleTuyen">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="nguoixuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="tuyentq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="doanhso" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="doanhthuSaleTuyentqChitiet">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sgtcode" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="tuyentq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tenkhach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chiemcho" Type="Int32" />
+          <Property Name="doanhthu" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="thucthu" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="nguoixuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="spDoanthuQuayTungay_Dengay_Result">
+          <Property Type="String" Name="sgtcode" Nullable="false" MaxLength="17" />
+          <Property Type="DateTime" Name="ngaydi" Nullable="true" />
+          <Property Type="DateTime" Name="ngayve" Nullable="true" />
+          <Property Type="String" Name="tenkhach" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="vetourid" Nullable="false" />
+          <Property Type="Decimal" Name="tongthu" Nullable="true" Precision="14" Scale="0" />
+          <Property Type="Decimal" Name="thucthu" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="String" Name="nguoixuatve" Nullable="true" MaxLength="25" />
+          <Property Type="DateTime" Name="ngayxuatve" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ngaytao" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="tuyentheoquy">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="tuyentq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sk1" Type="Int32" />
+          <Property Name="doanhso1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sk_1" Type="Int32" />
+          <Property Name="doanhso_1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sk2" Type="Int32" />
+          <Property Name="doanhso2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sk_2" Type="Int32" />
+          <Property Name="doanhso_2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sk3" Type="Int32" />
+          <Property Name="doanhso3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sk_3" Type="Int32" />
+          <Property Name="doanhso_3" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="QuayNgayBan">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int64" Nullable="false" />
+          <Property Name="dailyxuatve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sokhach" Type="Int32" />
+          <Property Name="doanhso" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="doanhthu" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="thongkeModelStoreContainer" CdmEntityContainer="TKDbContext">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="thongkeModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="hoten" ColumnName="hoten" />
+                <ScalarProperty Name="daily" ColumnName="daily" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="doimatkhau" ColumnName="doimatkhau" />
+                <ScalarProperty Name="ngaydoimk" ColumnName="ngaydoimk" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+                <ScalarProperty Name="khoi" ColumnName="khoi" />
+                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="nguoicapnhat" ColumnName="nguoicapnhat" />
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+                <ScalarProperty Name="nhom" ColumnName="nhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chinhanhs">
+            <EntityTypeMapping TypeName="thongkeModel.chinhanh">
+              <MappingFragment StoreEntitySet="chinhanh">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="chinhanh1" ColumnName="chinhanh" />
+                <ScalarProperty Name="tencn" ColumnName="tencn" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="thanhpho" ColumnName="thanhpho" />
+                <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="masothue" ColumnName="masothue" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+                <ScalarProperty Name="nhom" ColumnName="nhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dmdailies">
+            <EntityTypeMapping TypeName="thongkeModel.dmdaily">
+              <MappingFragment StoreEntitySet="dmdaily">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Daily" ColumnName="Daily" />
+                <ScalarProperty Name="TenDaily" ColumnName="TenDaily" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Dienthoai" ColumnName="Dienthoai" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doanhthuDoanNgayDis">
+            <EntityTypeMapping TypeName="thongkeModel.doanhthuDoanNgayDi">
+              <MappingFragment StoreEntitySet="doanhthuDoanNgayDi">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="sgtcode" ColumnName="sgtcode" />
+                <ScalarProperty Name="tuyentq" ColumnName="tuyentq" />
+                <ScalarProperty Name="batdau" ColumnName="batdau" />
+                <ScalarProperty Name="ketthuc" ColumnName="ketthuc" />
+                <ScalarProperty Name="sokhach" ColumnName="sokhach" />
+                <ScalarProperty Name="doanhthu" ColumnName="doanhthu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doanhthuQuayChitiets">
+            <EntityTypeMapping TypeName="thongkeModel.doanhthuQuayChitiet">
+              <MappingFragment StoreEntitySet="doanhthuQuayChitiet">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="sgtcode" ColumnName="sgtcode" />
+                <ScalarProperty Name="serial" ColumnName="serial" />
+                <ScalarProperty Name="tenkhach" ColumnName="tenkhach" />
+                <ScalarProperty Name="hanhtrinh" ColumnName="hanhtrinh" />
+                <ScalarProperty Name="ngaydi" ColumnName="ngaydi" />
+                <ScalarProperty Name="ngayve" ColumnName="ngayve" />
+                <ScalarProperty Name="giave" ColumnName="giave" />
+                <ScalarProperty Name="nguoiban" ColumnName="nguoiban" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doanhthuSaleQuays">
+            <EntityTypeMapping TypeName="thongkeModel.doanhthuSaleQuay">
+              <MappingFragment StoreEntitySet="doanhthuSaleQuay">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="nguoixuatve" ColumnName="nguoixuatve" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="doanhso" ColumnName="doanhso" />
+                <ScalarProperty Name="thucthu" ColumnName="thucthu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doanhthuToanhethongs">
+            <EntityTypeMapping TypeName="thongkeModel.doanhthuToanhethong">
+              <MappingFragment StoreEntitySet="doanhthuToanhethong">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="dailyxuatve" ColumnName="dailyxuatve" />
+                <ScalarProperty Name="khachht" ColumnName="khachht" />
+                <ScalarProperty Name="thucthuht" ColumnName="thucthuht" />
+                <ScalarProperty Name="khachcu" ColumnName="khachcu" />
+                <ScalarProperty Name="thucthucu" ColumnName="thucthucu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doanthuQuayNgayBans">
+            <EntityTypeMapping TypeName="thongkeModel.doanthuQuayNgayBan">
+              <MappingFragment StoreEntitySet="doanthuQuayNgayBan">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="dailyxuatve" ColumnName="dailyxuatve" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="sokhach" ColumnName="sokhach" />
+                <ScalarProperty Name="doanhso" ColumnName="doanhso" />
+                <ScalarProperty Name="doanhthu" ColumnName="doanhthu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spBaocaoDoanhThuDoanTheoNgayDi" FunctionName="thongkeModel.Store.spBaocaoDoanhThuDoanTheoNgayDi" />
+          <FunctionImportMapping FunctionImportName="spBaocaoDoanhThuQuayTheoNgayDi" FunctionName="thongkeModel.Store.spBaocaoDoanhThuQuayTheoNgayDi" />
+          <FunctionImportMapping FunctionImportName="spBaocaoDoanhThuSaleTheoNgayDi" FunctionName="thongkeModel.Store.spBaocaoDoanhThuSaleTheoNgayDi" />
+          <FunctionImportMapping FunctionImportName="spBaocaoDoanhThuSaleTheoQuay" FunctionName="thongkeModel.Store.spBaocaoDoanhThuSaleTheoQuay" />
+          <FunctionImportMapping FunctionImportName="spDoanhSoQuayChitietNgayBan" FunctionName="thongkeModel.Store.spDoanhSoQuayChitietNgayBan" />
+          <FunctionImportMapping FunctionImportName="spDoanhThuSaleChitietNgayban" FunctionName="thongkeModel.Store.spDoanhThuSaleChitietNgayban" />
+          <FunctionImportMapping FunctionImportName="spDoanhThuSaleChitietNgaydi" FunctionName="thongkeModel.Store.spDoanhThuSaleChitietNgaydi" />
+          <FunctionImportMapping FunctionImportName="spThongKeDoanhthu" FunctionName="thongkeModel.Store.spThongKeDoanhthu" />
+          <FunctionImportMapping FunctionImportName="spThongkeKhach" FunctionName="thongkeModel.Store.spThongkeKhach" />
+          <FunctionImportMapping FunctionImportName="spThongkeKhachToanHeThong" FunctionName="thongkeModel.Store.spThongkeKhachToanHeThong" />
+          <FunctionImportMapping FunctionImportName="spThongkeTuyentqTheoNgayDi" FunctionName="thongkeModel.Store.spThongkeTuyentqTheoNgayDi" />
+          <FunctionImportMapping FunctionImportName="spDoanhSoQuayChitietNgaydi" FunctionName="thongkeModel.Store.spDoanhSoQuayChitietNgaydi" />
+          <EntitySetMapping Name="tuyentqNgaydis">
+            <EntityTypeMapping TypeName="thongkeModel.tuyentqNgaydi">
+              <MappingFragment StoreEntitySet="tuyentqNgaydi">
+                <ScalarProperty Name="thucthucu" ColumnName="thucthucu" />
+                <ScalarProperty Name="khachcu" ColumnName="khachcu" />
+                <ScalarProperty Name="thucthuht" ColumnName="thucthuht" />
+                <ScalarProperty Name="khachht" ColumnName="khachht" />
+                <ScalarProperty Name="tuyentq" ColumnName="tuyentq" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="thongkewebs">
+            <EntityTypeMapping TypeName="thongkeModel.thongkeweb">
+              <MappingFragment StoreEntitySet="thongkeweb">
+                <ScalarProperty Name="huy" ColumnName="huy" />
+                <ScalarProperty Name="thanhcong" ColumnName="thanhcong" />
+                <ScalarProperty Name="chuaxuatve" ColumnName="chuaxuatve" />
+                <ScalarProperty Name="tuhuy" ColumnName="tuhuy" />
+                <ScalarProperty Name="taove" ColumnName="taove" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spThongkeWeb" FunctionName="thongkeModel.Store.spThongkeWeb" />
+          <FunctionImportMapping FunctionImportName="spThongkeWebchitiet" FunctionName="thongkeModel.Store.spThongkeWebchitiet">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="doanhthuSaleChitiets">
+            <EntityTypeMapping TypeName="thongkeModel.doanhthuSaleChitiet">
+              <MappingFragment StoreEntitySet="doanhthuSaleChitiet">
+                <ScalarProperty Name="nguoixuatve" ColumnName="nguoixuatve" />
+                <ScalarProperty Name="thucthu" ColumnName="thucthu" />
+                <ScalarProperty Name="doanhthu" ColumnName="doanhthu" />
+                <ScalarProperty Name="chiemcho" ColumnName="chiemcho" />
+                <ScalarProperty Name="tenkhach" ColumnName="tenkhach" />
+                <ScalarProperty Name="tuyentq" ColumnName="tuyentq" />
+                <ScalarProperty Name="sgtcode" ColumnName="sgtcode" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spDoanhthuDoanChitiet" FunctionName="thongkeModel.Store.spDoanhthuDoanChitiet" />
+          <EntitySetMapping Name="doanhthuDoanChitiets">
+            <EntityTypeMapping TypeName="thongkeModel.doanhthuDoanChitiet">
+              <MappingFragment StoreEntitySet="doanhthuDoanChitiet">
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="congno" ColumnName="congno" />
+                <ScalarProperty Name="thucthu" ColumnName="thucthu" />
+                <ScalarProperty Name="giave" ColumnName="giave" />
+                <ScalarProperty Name="diemdon" ColumnName="diemdon" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="tenkhach" ColumnName="tenkhach" />
+                <ScalarProperty Name="serial" ColumnName="serial" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="vetourid" ColumnName="vetourid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chitiettours">
+            <EntityTypeMapping TypeName="thongkeModel.chitiettour">
+              <MappingFragment StoreEntitySet="chitiettour">
+                <ScalarProperty Name="ketthuc" ColumnName="ketthuc" />
+                <ScalarProperty Name="batdau" ColumnName="batdau" />
+                <ScalarProperty Name="tuyentq" ColumnName="tuyentq" />
+                <ScalarProperty Name="sgtcode" ColumnName="sgtcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spGetTourByCode" FunctionName="thongkeModel.Store.spGetTourByCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thongkeModel.spGetTourByCode_Result">
+                <ScalarProperty Name="sgtcode" ColumnName="sgtcode" />
+                <ScalarProperty Name="tuyentq" ColumnName="tuyentq" />
+                <ScalarProperty Name="batdau" ColumnName="batdau" />
+                <ScalarProperty Name="ketthuc" ColumnName="ketthuc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spThongkeWeb_ngaydi" FunctionName="thongkeModel.Store.spThongkeWeb_ngaydi" />
+          <FunctionImportMapping FunctionImportName="spThongkeWebchitiet_ngaydi" FunctionName="thongkeModel.Store.spThongkeWebchitiet_ngaydi">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="thongkewebchitiets">
+            <EntityTypeMapping TypeName="thongkeModel.thongkewebchitiet">
+              <MappingFragment StoreEntitySet="thongkewebchitiet">
+                <ScalarProperty Name="kenhgd" ColumnName="kenhgd" />
+                <ScalarProperty Name="dailyxuatve" ColumnName="dailyxuatve" />
+                <ScalarProperty Name="nguoixuatve" ColumnName="nguoixuatve" />
+                <ScalarProperty Name="doanhso" ColumnName="doanhso" />
+                <ScalarProperty Name="sokhach" ColumnName="sokhach" />
+                <ScalarProperty Name="huyve" ColumnName="huyve" />
+                <ScalarProperty Name="serial" ColumnName="serial" />
+                <ScalarProperty Name="tenkhach" ColumnName="tenkhach" />
+                <ScalarProperty Name="ngayve" ColumnName="ngayve" />
+                <ScalarProperty Name="ngaydi" ColumnName="ngaydi" />
+                <ScalarProperty Name="hanhtrinh" ColumnName="hanhtrinh" />
+                <ScalarProperty Name="sgtcode" ColumnName="sgtcode" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doanhthuSaleTuyens">
+            <EntityTypeMapping TypeName="thongkeModel.doanhthuSaleTuyen">
+              <MappingFragment StoreEntitySet="doanhthuSaleTuyen">
+                <ScalarProperty Name="thucthu" ColumnName="thucthu" />
+                <ScalarProperty Name="doanhso" ColumnName="doanhso" />
+                <ScalarProperty Name="tuyentq" ColumnName="tuyentq" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="nguoixuatve" ColumnName="nguoixuatve" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doanhthuSaleTuyentqChitiets">
+            <EntityTypeMapping TypeName="thongkeModel.doanhthuSaleTuyentqChitiet">
+              <MappingFragment StoreEntitySet="doanhthuSaleTuyentqChitiet">
+                <ScalarProperty Name="nguoixuatve" ColumnName="nguoixuatve" />
+                <ScalarProperty Name="thucthu" ColumnName="thucthu" />
+                <ScalarProperty Name="doanhthu" ColumnName="doanhthu" />
+                <ScalarProperty Name="chiemcho" ColumnName="chiemcho" />
+                <ScalarProperty Name="tenkhach" ColumnName="tenkhach" />
+                <ScalarProperty Name="tuyentq" ColumnName="tuyentq" />
+                <ScalarProperty Name="sgtcode" ColumnName="sgtcode" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spBaocaoDoanhThuSaleTheoTuyen" FunctionName="thongkeModel.Store.spBaocaoDoanhThuSaleTheoTuyen" />
+          <FunctionImportMapping FunctionImportName="spDoanhThuSaleChitietTuyentq" FunctionName="thongkeModel.Store.spDoanhThuSaleChitietTuyentq" />
+          <FunctionImportMapping FunctionImportName="spDoanthuQuayTungay_Dengay" FunctionName="thongkeModel.Store.spDoanthuQuayTungay_Dengay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thongkeModel.spDoanthuQuayTungay_Dengay_Result">
+                <ScalarProperty Name="sgtcode" ColumnName="sgtcode" />
+                <ScalarProperty Name="ngaydi" ColumnName="ngaydi" />
+                <ScalarProperty Name="ngayve" ColumnName="ngayve" />
+                <ScalarProperty Name="tenkhach" ColumnName="tenkhach" />
+                <ScalarProperty Name="vetourid" ColumnName="vetourid" />
+                <ScalarProperty Name="tongthu" ColumnName="tongthu" />
+                <ScalarProperty Name="thucthu" ColumnName="thucthu" />
+                <ScalarProperty Name="nguoixuatve" ColumnName="nguoixuatve" />
+                <ScalarProperty Name="ngayxuatve" ColumnName="ngayxuatve" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spLoadTuyentq" FunctionName="thongkeModel.Store.spLoadTuyentq" />
+          <EntitySetMapping Name="tuyentheoquys">
+            <EntityTypeMapping TypeName="thongkeModel.tuyentheoquy">
+              <MappingFragment StoreEntitySet="tuyentheoquy">
+                <ScalarProperty Name="doanhso_3" ColumnName="doanhso_3" />
+                <ScalarProperty Name="sk_3" ColumnName="sk_3" />
+                <ScalarProperty Name="doanhso3" ColumnName="doanhso3" />
+                <ScalarProperty Name="sk3" ColumnName="sk3" />
+                <ScalarProperty Name="doanhso_2" ColumnName="doanhso_2" />
+                <ScalarProperty Name="sk_2" ColumnName="sk_2" />
+                <ScalarProperty Name="doanhso2" ColumnName="doanhso2" />
+                <ScalarProperty Name="sk2" ColumnName="sk2" />
+                <ScalarProperty Name="doanhso_1" ColumnName="doanhso_1" />
+                <ScalarProperty Name="sk_1" ColumnName="sk_1" />
+                <ScalarProperty Name="doanhso1" ColumnName="doanhso1" />
+                <ScalarProperty Name="sk1" ColumnName="sk1" />
+                <ScalarProperty Name="tuyentq" ColumnName="tuyentq" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spThongkeTuyenTheoQuy" FunctionName="thongkeModel.Store.spThongkeTuyenTheoQuy" />
+          <FunctionImportMapping FunctionImportName="spBaocaoDoanhThuQuayTheoNgayBan" FunctionName="thongkeModel.Store.spBaocaoDoanhThuQuayTheoNgayBan" />
+          <EntitySetMapping Name="QuayNgayBans">
+            <EntityTypeMapping TypeName="thongkeModel.QuayNgayBan">
+              <MappingFragment StoreEntitySet="QuayNgayBan">
+                <ScalarProperty Name="doanhthu" ColumnName="doanhthu" />
+                <ScalarProperty Name="doanhso" ColumnName="doanhso" />
+                <ScalarProperty Name="sokhach" ColumnName="sokhach" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="dailyxuatve" ColumnName="dailyxuatve" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spBaocaoDoanhThuQuayTheoNgayBanND" FunctionName="thongkeModel.Store.spBaocaoDoanhThuQuayTheoNgayBanND" />
+          <FunctionImportMapping FunctionImportName="spBaocaoDoanhThuQuayTheoNgayBanOB" FunctionName="thongkeModel.Store.spBaocaoDoanhThuQuayTheoNgayBanOB" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,25 @@
+﻿.logo{
+    padding-left:50px;
+    float:left;
+}
+
+.profile{
+   
+    color:white;
+    font-weight:bold;
+    display:inline;
+    padding:10px 0 0 10px;
+
+}
+fieldset.fieldset-border{
+    border: solid 1px #DDD !important;
+    padding: 0 10px 10px 10px;
+    border-bottom: none;
+}
+legend.fieldset-border{
+    color:#3E5C9A;
+    width:auto !important;
+    border:none;
+    margin-bottom:-2px;
+    font-size:11px;
+}

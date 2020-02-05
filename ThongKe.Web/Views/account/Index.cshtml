@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    <script src="~/Assets/Admin/js/User/bootbox.min.js"></script>
+    <script src="~/Assets/Admin/js/User/mustache.min.js"></script>
+    <script src="~/Assets/Admin/js/User/jquery.twbsPagination.min.js"></script>
+    <script src="~/Assets/Admin/js/User/jquery.validate.min.js"></script>
+    <script src="~/Assets/Admin/js/User/userController.js"></script>
+    <link href="~/Assets/Admin/css/user.css" rel="stylesheet" />
+    @*<script>
+            $(function () {
+                $('.modal-dialog').draggable();
+            });
+        </script>*@
+
+}
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-10">
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="txtNameS" placeholder="Type name or username..." />
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" id="ddlStatusS">
+                    <option value="">Tất cả</option>
+                    <option value="true">Kích hoạt</option>
+                    <option value="false">Khóa</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 btn-group">
+                <button id="btnSearch" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                <button id="btnReset" class="btn btn-secondary">Reset</button>
+                <button id="btnAddNew" class="btn btn-success"><i class="fa fa-plus-square"></i></button>
+            </div>
+
+        </div>
+        @*<div class="col-md-2">
+                <button id="btnAddNew" class="btn btn-success pull-right"><i class="fa fa-plus-square"></i>Add new</button>
+            </div>*@
+
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover text-center">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Username</td>
+                    <td>Họ Tên</td>
+                    <td>Nhóm quyền</td>
+                    <td>đại lý</td>
+                    <td>Chi nhánh</td>
+                    <td>Trạng thái</td>
+
+                </tr>
+            </thead>
+            <tbody id="tblData" class="table"></tbody>
+        </table>
+
+        <div id="pagination" class="pagination"></div>
+    </div>
+
+
+    <script id="data-template" type="x-tmpl-mustache">
+        Hello {{ hoten }}!
+        <tr>
+            <td class="col-md-1">
+                <div class="btn-group">
+                    <button class="btn btn-outline btn-primary btn-xs btn-edit" data-id="{{username}}"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-outline btn-danger btn-xs btn-delete" data-id="{{username}}"><i class="fa fa-trash"></i></button>@*<i class="fa fa-trash" aria-hidden="true"></i>*@
+                </div>
+            </td>
+
+            <td>{{username}}</td>
+            <td>{{hoten}}</td>
+            <td>{{nhom}}</td>
+            <td>{{{daily}}}</td>
+            <td>{{chinhanh}}</td>
+            <td>{{{trangthai}}}</td>
+
+        </tr>
+    </script>
+</div>
+
+@RenderPage("_AddUpdateModal.cshtml");

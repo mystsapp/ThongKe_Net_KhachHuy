@@ -1,0 +1,161 @@
+﻿@{
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Báo cáo thống kê.</title>
+
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="shortcut icon" href="~/Content/image/favicon.ico" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="background-color:#3E5C9A;">
+            <!--navbar-header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="logo">
+                    <a href="/">
+                        <img src="/Content/image/logo-color-big1.png" alt="logo" />
+                    </a>
+                </div>
+
+            </div>  <!-- /.navbar-header -->
+            <!-- /.navbar-right top link -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <li class="profile">
+                    Xin chào @Session["hoten"]
+
+                </li>
+
+                <li class="dropdown">
+                    <!--nav account-->
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw" style="color:black"></i> <i class="fa fa-caret-down" style="color:black"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("changepass", "Login", new {area="",name=Session["username"].ToString()})"><i class="fa fa-gear fa-key"></i> Đổi mật khẩu</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="@Url.Action("Logout", "Login", new {area=""})"><i class="fa fa-sign-out fa-fw"></i> Thoát</a>
+                        </li>
+                    </ul>
+                </li><!--nav account-->
+                <!--nav search-->
+                @*<li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="glyphicon glyphicon-search" style="color:black"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+
+                        <li>
+                            <div class="input-group custom-search-form">
+
+                                <input type="text" class="form-control" placeholder="Nhập thông tin....">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-facebook" type="button">Tìm</button>
+                                </span>
+                            </div>
+
+                        </li>
+                    </ul>
+                </li>*@<!-- /nav search-->
+            </ul>
+            <!-- /.navbar-rigt top link -->
+        </nav>
+        <!--menu trai-->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="/"><i class="fa fa-dashboard fa-fw"></i> Trang chủ</a>
+                    </li>
+                    <li>
+                        <a href="/Account"><i class="fa fa-car fa-fw"></i> Tài khoản</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Báo cáo Doanh Thu <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li>
+                                <a href="/BaoCao/SaleTheoQuay">Sale Theo Quay </a>
+                            </li>
+
+                            <li>
+                                <a href="/BaoCao/SaleTheoNgayDi">Sale theo ngày đi</a>
+                            </li>
+
+                            <li>
+                                <a href="/BaoCao/QuayTheoNgayBan">Quay theo ngày bán</a>
+                            </li>
+
+                            <li>
+                                <a href="/BaoCao/QuayTheoNgayDi">Quầy theo ngày đi</a>
+                            </li>
+
+                            <li>
+                                <a href="/BaoCao/DoanTheoNgayDi">Doàn Theo Ngày</a>
+                            </li>
+                            <li>
+                                <a href="/BaoCao/TuyentqTheoNgayDi">Tuyến tham quan theo ngày đi</a>
+                            </li>
+
+                            <li>
+                                <a href="/BaoCao/KhachleHethong">Khách lẻ toàn hệ thống</a>
+                            </li>
+
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!--/ menu trai-->
+        <!-- navbar-side menu -->
+        <div id="page-wrapper">
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="Alert-Box" class="alert @TempData["AlertType"] hide">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+            @RenderBody()
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/vendor")
+
+    <script src="~/Assets/Admin/js/alertBox.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            $(".maskInput").mask("99/99/9999");
+        });
+
+    </script>
+</body>
+</html>

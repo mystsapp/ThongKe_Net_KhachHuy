@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="https://cdn.rawgit.com/jtblin/angular-chart.js/0.8.8/dist/angular-chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jtblin/angular-chart.js/0.8.8/dist/angular-chart.min.css">
+    <script src="~/Assets/Admin/angular/angular.js"></script>
+    <script src="~/Assets/Admin/js/Home/homController.js"></script>
+    <script src="~/Assets/Admin/js/Home/homNdController.js"></script>
+    <script src="~/Assets/Admin/js/Home/homDTOBController.js"></script>
+    <script src="~/Assets/Admin/js/Home/homDTNDController.js"></script>
+</head>
+
+<body ng-app="app">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>THÔNG KÊ SỐ KHÁCH OB THEO NGÀY</h4>
+        </div>
+        <div class="row panel-body" ng-controller="ChartController">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable ui-sortable">
+
+                <div>
+                    <div>
+                        <canvas id="bar" class="chart chart-bar"
+                                chart-data="data" chart-labels="labels" chart-series="series" chart-colours></canvas>
+
+                        @*<canvas id="pie" class="chart chart-pie"
+                            chart-data="data" chart-labels="labels" chart-options="options"></canvas>*@
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-lg-4 connectedSortable ui-sortable">
+
+                <!-- Map box -->
+                @*<div class="box box-solid bg-light-blue-gradient">
+                        <div class="box-header ui-sortable-handle" style="cursor: move;">
+                            <!-- tools box -->
+                            <h3 class="box-title">
+                                Dữ liệu thống kê
+                            </h3>
+                        </div>
+                        <div class="box-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>Văn phòng </td>
+                                        <td>SK HT</td>
+                                        <td>SK TT</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in tableData">
+                                        <td>{{item.DaiLyXuatVe}}</td><!--build in filter angularJs-->
+                                        <td>{{item.SoKhachHT}}</td>
+                                        <td>{{item.SoKhachTT}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body-->
+                        <div class="box-footer no-border">
+
+                        </div>
+                    </div>*@
+                <!-- /.box -->
+
+
+            </section><!-- right col -->
+
+        </div>
+    </div>
+
+    @* ND *@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>THÔNG KÊ SỐ KHÁCH ND THEO NGÀY</h4>
+        </div>
+        <div class="row panel-body" ng-controller="ChartNDController">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable ui-sortable">
+
+                <div>
+                    <div>
+                        <canvas id="bar" class="chart chart-bar"
+                                chart-data="data" chart-labels="labels" chart-series="series" chart-colours></canvas>
+
+                        @*<canvas id="pie" class="chart chart-pie"
+                            chart-data="data" chart-labels="labels" chart-options="options"></canvas>*@
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-lg-4 connectedSortable ui-sortable">
+
+                <!-- Map box -->
+                @*<div class="box box-solid bg-light-blue-gradient">
+                        <div class="box-header ui-sortable-handle" style="cursor: move;">
+                            <!-- tools box -->
+                            <h3 class="box-title">
+                                Dữ liệu thống kê
+                            </h3>
+                        </div>
+                        <div class="box-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>Văn phòng </td>
+                                        <td>SK HT</td>
+                                        <td>SK TT</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in tableData">
+                                        <td>{{item.DaiLyXuatVe}}</td><!--build in filter angularJs-->
+                                        <td>{{item.SoKhachHT}}</td>
+                                        <td>{{item.SoKhachTT}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body-->
+                        <div class="box-footer no-border">
+
+                        </div>
+                    </div>*@
+                <!-- /.box -->
+
+
+            </section><!-- right col -->
+
+        </div>
+    </div>
+
+    @* doanh thu OB *@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>THÔNG KÊ DOANH THU OB THEO NGÀY</h4>
+        </div>
+        <div class="row panel-body" ng-controller="ChartDTOBController">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable ui-sortable">
+
+                <div>
+                    <div>
+                        <canvas id="bar" class="chart chart-bar"
+                                chart-data="data" chart-labels="labels" chart-series="series" chart-colours></canvas>
+
+                        @*<canvas id="pie" class="chart chart-pie"
+                            chart-data="data" chart-labels="labels" chart-options="options"></canvas>*@
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    @* doanh thu ND *@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>THÔNG KÊ DOANH THU ND THEO NGÀY</h4>
+        </div>
+        <div class="row panel-body" ng-controller="ChartDTNDController">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable ui-sortable">
+
+                <div>
+                    <div>
+                        <canvas id="bar" class="chart chart-bar"
+                                chart-data="data" chart-labels="labels" chart-series="series" chart-colours></canvas>
+
+                        @*<canvas id="pie" class="chart chart-pie"
+                            chart-data="data" chart-labels="labels" chart-options="options"></canvas>*@
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</body>
+
+</html>
