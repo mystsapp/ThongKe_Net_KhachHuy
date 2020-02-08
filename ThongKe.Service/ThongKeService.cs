@@ -61,6 +61,8 @@ namespace ThongKe.Service
         ///////////////////////////////////////////// Khach Huy ///////////////////////////////////////////////////////////////
         IEnumerable<KhachHuy> KhachHuyEntities(string tungay, string denngay, string cn, string khoi, int page, int pageSize, out int totalRow);
         DataTable KhachHuyEntitiesToExcel(string tungay, string denngay, string cn, string khoi);
+        ////////////////////////////////// Tuyentq theo ngày di chi tiet ////////////////////////////////////////////
+        DataTable doanhthuTuyentqTheoNgayDiChitiet(string tungay, string denngay, string chinhanh, string tuyentq, string khoi);
     }
     public class ThongKeService : IThongKeService
     {
@@ -247,6 +249,12 @@ namespace ThongKe.Service
         public DataTable KhachHuyEntitiesToExcel(string tungay, string denngay, string cn, string khoi)
         {
             var result = _thongkeRepository.KhachHuyEntitiesToExcel(tungay, denngay, cn, khoi);
+            return result;
+        }
+
+        public DataTable doanhthuTuyentqTheoNgayDiChitiet(string tungay, string denngay, string chinhanh, string tuyentq, string khoi)
+        {
+            var result = _thongkeRepository.doanhthuTuyentqTheoNgayDiChitiet(tungay, denngay, chinhanh, tuyentq, khoi);
             return result;
         }
     }

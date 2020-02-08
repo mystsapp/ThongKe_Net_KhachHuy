@@ -13,6 +13,12 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="shortcut icon" href="/Content/image/favicon.ico" />
+    <style>
+        .mypicture {
+            width: 203px;
+            height: 39px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="background-color:#3E5C9A;">
@@ -21,7 +27,7 @@
 
             <div class="logo">
                 <a href="#">
-                    <img src="/Content/image/logo-color-big1.png" alt="logo" />
+                    <img src="/Content/image/logo-color-big1.png" alt="logo" class="mypicture"/>
                 </a>
             </div>
 
@@ -36,7 +42,7 @@
                         <h3 class="panel-title text-center">ĐĂNG NHẬP</h3>
                     </div>
                     <div class="panel-body">
-                        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @autocomplete="off"}))
+                        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @autocomplete = "off" }))
                         {
                             @Html.ValidationSummary(false, "", new { @class = "alert-danger" });
                             <fieldset>

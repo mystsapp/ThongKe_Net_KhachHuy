@@ -78,6 +78,9 @@ namespace ThongKe.Data.Repositories
         //////////////////////////////////////// Khach Huy /////////////////////////////////////////////////////////////
         IEnumerable<KhachHuy> KhachHuyEntities(string tungay, string denngay, string cn, string khoi, int page, int pageSize, out int totalRow);
         DataTable KhachHuyEntitiesToExcel(string tungay, string denngay, string cn, string khoi);
+
+        ////////////////////////////////// Tuyentq theo ngày di chi tiet ////////////////////////////////////////////
+        DataTable doanhthuTuyentqTheoNgayDiChitiet(string tungay, string denngay, string chinhanh, string tuyentq, string khoi);
     }
 
     public class thongkeRepository : RepositoryBase<doanthuQuayNgayBan>, IthongkeRepository
@@ -243,7 +246,23 @@ namespace ThongKe.Data.Repositories
             try
             {
                 DataTable dt = new DataTable();
-                var result = DbContext.spThongkeTuyentqTheoNgayDi(Convert.ToDateTime(tungay), Convert.ToDateTime(denngay), chinhanh, khoi).ToList();
+                List<tuyentqNgaydi> result = null;
+                var parammeter = new SqlParameter[]
+            {
+                        new SqlParameter("@tungay", DateTime.Parse(tungay)),
+                        new SqlParameter("@denngay",DateTime.Parse(denngay)),
+                        new SqlParameter("@chinhanh", chinhanh)
+            };
+
+                if (khoi == "OB")
+                {
+                    result = DbContext.Database.SqlQuery<tuyentqNgaydi>("spThongkeTuyentqTheoNgayDiOB @tungay, @denngay, @chinhanh", parammeter).ToList();
+                }
+                else
+                {
+                    result = DbContext.Database.SqlQuery<tuyentqNgaydi>("spThongkeTuyentqTheoNgayDiND @tungay, @denngay, @chinhanh", parammeter).ToList();
+                }
+                //var result = DbContext.spThongkeTuyentqTheoNgayDi(Convert.ToDateTime(tungay), Convert.ToDateTime(denngay), chinhanh, khoi).ToList();
                 var count = result.Count();
 
                 dt = EntityToTable.ToDataTable(result);
@@ -585,14 +604,22 @@ namespace ThongKe.Data.Repositories
             //    throw;
             //}
 
+            IEnumerable<tuyentqNgaydi> result = null;
             var parammeter = new SqlParameter[]
             {
                 new SqlParameter("@tungay", DateTime.Parse(tungay)),
                 new SqlParameter("@denngay",DateTime.Parse(denngay)),
-                new SqlParameter("@chinhanh", chinhanh),
-                new SqlParameter("@khoi",khoi)
+                new SqlParameter("@chinhanh", chinhanh)
             };
-            var result = DbContext.Database.SqlQuery<tuyentqNgaydi>("spThongkeTuyentqTheoNgayDi @tungay, @denngay, @chinhanh, @khoi", parammeter).ToList();
+            if(khoi == "OB")
+            {
+                result = DbContext.Database.SqlQuery<tuyentqNgaydi>("spThongkeTuyentqTheoNgayDiOB @tungay, @denngay, @chinhanh", parammeter).ToList();
+            }
+            else
+            {
+                result = DbContext.Database.SqlQuery<tuyentqNgaydi>("spThongkeTuyentqTheoNgayDiND @tungay, @denngay, @chinhanh", parammeter).ToList();
+            }
+            
             totalRow = result.Count();
             result = result.OrderBy(x => x.stt).Skip((page - 1) * pageSize).Take(pageSize).ToList();
             return result;
@@ -969,6 +996,41 @@ namespace ThongKe.Data.Repositories
                 if (dt.Rows.Count > 0)
                     return dt;
                 return null;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        ////////////////////////////////// Tuyentq theo ngày di chi tiet ////////////////////////////////////////////
+        public DataTable doanhthuTuyentqTheoNgayDiChitiet(string tungay, string denngay, string chinhanh, string tuyentq, string khoi)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                IEnumerable<TuyentqChiTiet> result = null;
+                var parammeter = new SqlParameter[]
+                {
+                new SqlParameter("@tungay", tungay),
+                new SqlParameter("@denngay",denngay),
+                new SqlParameter("@chinhanh", chinhanh),
+                new SqlParameter("@tuyentq", tuyentq)
+                };
+                if (khoi == "OB")
+                {
+                    result = DbContext.Database.SqlQuery<TuyentqChiTiet>("spThongkeTuyentqChitietOB @tungay, @denngay, @chinhanh, @tuyentq", parammeter).ToList();
+                }
+                else
+                {
+                    result = DbContext.Database.SqlQuery<TuyentqChiTiet>("spThongkeTuyentqChitietND @tungay, @denngay, @chinhanh, @tuyentq", parammeter).ToList();
+                }
+
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                return dt;
             }
             catch
             {

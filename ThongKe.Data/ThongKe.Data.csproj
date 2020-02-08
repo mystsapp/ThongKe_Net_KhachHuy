@@ -138,6 +138,7 @@
       <DependentUpon>TKDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhachHuy.cs" />
+    <Compile Include="Models\TuyentqChiTiet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\chinhanhRepository.cs" />
     <Compile Include="Repositories\dmdailyRepository.cs" />

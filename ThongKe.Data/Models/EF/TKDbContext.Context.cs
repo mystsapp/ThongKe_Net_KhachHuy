@@ -46,6 +46,7 @@ namespace ThongKe.Data.Models.EF
         public virtual DbSet<tuyentheoquy> tuyentheoquys { get; set; }
         public virtual DbSet<QuayNgayBan> QuayNgayBans { get; set; }
         public virtual DbSet<KhachHuy> KhachHuys { get; set; }
+        public virtual DbSet<TuyentqChiTiet> TuyentqChiTiets { get; set; }
     
         public virtual ObjectResult<doanhthuDoanNgayDi> spBaocaoDoanhThuDoanTheoNgayDi(Nullable<System.DateTime> tungay, Nullable<System.DateTime> denngay, string chinhanh, string khoi)
         {

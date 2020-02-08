@@ -13,6 +13,12 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="shortcut icon" href="/Content/image/favicon.ico" />
+    <style>
+        .mypicture {
+            width: 203px;
+            height: 39px;
+        }
+    </style>
 </head>
 <body>
     <div id="wrapper">
@@ -27,7 +33,7 @@
                 </button>
                 <div class="logo">
                     <a href="/">
-                        <img src="/Content/image/logo-color-big1.png" alt="logo" />
+                        <img src="/Content/image/logo-color-big1.png" alt="logo" class="mypicture"/>
                     </a>
                 </div>
 
@@ -130,7 +136,7 @@
                                 <li>
                                     <a href="/BaoCao/TuyentqTheoNgayDi">Tuyến tham quan theo ngày đi tour</a>
                                 </li>
-                                
+
                                 <li>
                                     <a href="/BaoCao/TuyentqTheoQuy">Tuyến tham quan theo quý</a>
                                 </li>
@@ -138,7 +144,7 @@
                                 <li>
                                     <a href="/BaoCao/KhachleHethong">Quầy khách lẽ toàn hệ thống</a>
                                 </li>
-                                
+
                                 <li>
                                     <a href="/BaoCao/KhachHuy" class="text-danger">Thống kê huy đoàn</a>
                                 </li>
@@ -149,7 +155,7 @@
                         </li>
                     }
 
-                    @if (nhom == "Admins" || nhom=="KDO")
+                    @if (nhom == "Admins" || nhom == "KDO")
                     {
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Kinh doanh Online <span class="fa arrow"></span></a>
@@ -197,7 +203,7 @@
         });
 
     </script>
-    
+
 </body>
 </html>
 

@@ -61,8 +61,8 @@
                                 Code CN
                                 <select class="form-control" id="ddlChiNhanh" name="cn">
                                     @*<option value="">Tất cả</option>
-                    <option value="STS">STS</option>
-                    <option value="STH">STH</option>*@
+                                        <option value="STS">STS</option>
+                                        <option value="STH">STH</option>*@
                                 </select>
                             </div>
                             <div class="col-md-2">
@@ -100,6 +100,7 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr class="text-left">
+                    <td>#</td>
                     <td>STT</td>
                     <td>Code CN</td>
                     <td>Tuyến tham quan</td>
@@ -120,7 +121,17 @@
     <script id="data-template" type="x-tmpl-mustache">
         Hello {{ hoten }}!
         <tr>
+            <td>
+                <form id="frmDetail" action="/BaoCao/LoadDataTuyentqTheoNgayDiChitietToExcel">
+                    <input type="hidden" name="tungay" id="hidTuNgay" />
+                    <input type="hidden" name="denngay" id="hidDenNgay" />
+                    <input type="hidden" name="tuyentq" id="hidTuyentq" />
+                    <input type="hidden" name="chinhanh" id="hidChiNhanh" />
+                    <input type="hidden" name="khoi" id="hidKhoi" />
+                    <button type="button" data-chinhanh="{{chinhanh}}" data-tuyentq="{{tuyentq}}" class="btn btn-outline btn-success btnExportDetail" ><i class="fas fa-file-export"></i></button>
 
+                </form>
+            </td>
             <td class="text-center">{{stt}}</td>
             <td class="text-center">{{chinhanh}}</td>
             <td class="text-left">{{tuyentq}}</td>

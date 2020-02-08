@@ -65,6 +65,37 @@ var tuyentqTheoNgayDiController = {
         $('#btnExport').off('click').on('click', function () {
             $('#frmSearch').submit();
         });
+        
+        $('.btnExportDetail').off('click').on('click', function () {
+            
+            var tungay = $('#txtTuNgay').val();
+            var denngay = $('#txtDenNgay').val();
+            var tuyentq = $(this).data('tuyentq');
+            var cn = $(this).data('chinhanh');
+            var khoi = '';
+            //if (cn == "") {
+            //    cn = $('#ddlChiNhanh').val();
+            //    var khoi = $('#ddlKhoi').val();
+            //} else {
+            //    var khoi = $('#hidKhoi').data('khoi');
+            //}
+            if ($('#hidNhom').val() !== "Users") {
+                khoi = $('#ddlKhoi').val();
+            } else {
+                khoi = $('#hidKhoi').data('khoi');
+            }
+
+            $('#hidTuNgay').val(tungay);
+            $('#hidDenNgay').val(denngay);
+            $('#hidTuyentq').val(tuyentq);
+
+            $('#hidKhoi').val(khoi);
+            $('#hidChiNhanh').val(cn);
+            $('#frmDetail').submit();
+            //alert(daily);
+            //quayTheoNgayDiController.ExportDetail();
+        });
+
 
         $('#btnReset').off('click').on('click', function () {
             tuyentqTheoNgayDiController.resetForm();
@@ -181,16 +212,16 @@ var tuyentqTheoNgayDiController = {
                             //doanhthu: numeral(item.doanhthu).format('0,0'),
                         });
 
-                    })
+                    });
 
                     $('#tblData').html(html);
                     tuyentqTheoNgayDiController.paging(response.total, function () {
                         tuyentqTheoNgayDiController.LoadData();
                     }, changePageSize);
-                    //quayTheoNgayDiController.registerEvent();
+                    tuyentqTheoNgayDiController.registerEvent();
                 }
             }
-        })
+        });
     },
 
     paging: function (totalRow, callback, changePageSize) {

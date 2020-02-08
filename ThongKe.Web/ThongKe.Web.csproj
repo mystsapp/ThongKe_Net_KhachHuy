@@ -1946,8 +1946,9 @@
     <Content Include="Content\image\favicon.ico" />
     <Content Include="Content\image\favicon.png" />
     <Content Include="Content\image\logo-color-big.png" />
+    <Content Include="Content\image\logo-color-big1_.png" />
     <Content Include="Content\image\logo-color-big1.png" />
-    <Content Include="Content\image\logo1.png" />
+    <Content Include="Content\image\logo1_.png" />
     <Content Include="Content\image\qlxe.png" />
     <Content Include="Content\image\tieude.png" />
     <Content Include="Content\PagedList.css" />
